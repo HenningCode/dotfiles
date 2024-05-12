@@ -6,6 +6,7 @@ end
 
 set -U fish_user_paths  /home/henning/.local/share/bob/nvim-bin $fish_user_paths
 
+alias et "nvim ~/.config/tmux/tmux.conf"
 alias ef "nvim ~/.config/fish/config.fish"
 alias en "cd ~/.config/nvim && nvim"
 alias eh "nvim ~/.config/hypr/hyprland.conf"
