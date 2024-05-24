@@ -13,5 +13,7 @@ alias eh "nvim ~/.config/hypr/hyprland.conf"
 alias ek "nvim ~/.config/kitty/kitty.conf"
 alias config "git --git-dir=$HOME/.config/.cfg/ --work-tree=$HOME/.config"
 alias qei "nvim qmk_firmware/keyboards/smithrune/iron165r2/keymaps/HenningCode/keymap.c"
+alias ll "ls -lh --group-directories-first --color=auto"
+alias ls "ls -h --group-directories-first --color=auto"
 
 source (/usr/bin/starship init fish --print-full-init | psub)
