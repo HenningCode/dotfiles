@@ -8,9 +8,10 @@ local on_attach = function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, {})
 
+    -- Telescope keymaps
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>gr", builtin.lsp_document_symbols, {})
-    vim.keymap.set("n", "<leader>gd", builtin.diagnostics, {})
+    vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {})
+    vim.keymap.set("n", "<leader>gD", builtin.diagnostics, {})
 end
 
 return {
@@ -38,7 +39,7 @@ return {
         require("mason").setup()
         require("fidget").setup({})
         require("mason-lspconfig").setup({
-            ensure_installed = { "lua_ls", "rust_analyzer" },
+            ensure_installed = { "lua_ls" },
         })
 
         local lspconfig = require("lspconfig")
@@ -49,6 +50,28 @@ return {
         lspconfig.rust_analyzer.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                ["rust-analyzer"] = {
+                    cargo = {
+                        allFeatures = true,
+                        loadOutDirsFromCheck = true,
+                        runBuildScripts = true,
+                    },
+                    -- Add clippy lints for Rust.
+                    checkOnSave = {
+                        allFeatures = true,
+                        command = "clippy",
+                        extraArgs = {
+                            "--",
+                            "--no-deps",
+                            "-Dclippy::correctness",
+                            "-Dclippy::complexity",
+                            "-Wclippy::perf",
+                            "-Wclippy::pedantic",
+                        },
+                    },
+                },
+            },
         })
 
         cmp.setup({

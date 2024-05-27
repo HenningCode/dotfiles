@@ -15,5 +15,15 @@ alias config "git --git-dir=$HOME/.config/.cfg/ --work-tree=$HOME/.config"
 alias qei "nvim qmk_firmware/keyboards/smithrune/iron165r2/keymaps/HenningCode/keymap.c"
 alias ll "ls -lh --group-directories-first --color=auto"
 alias ls "ls -h --group-directories-first --color=auto"
+alias vi "nvim"
+alias tu "tmux"
 
 source (/usr/bin/starship init fish --print-full-init | psub)
+
+function space
+    if count $argv > /dev/null
+        du -sh $argv/*
+    else
+        du -sh *
+    end
+end
