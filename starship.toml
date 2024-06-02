@@ -1,7 +1,16 @@
-format = '$python$time-$username-$os-$directory$git_branch$git_status$status[>](bold wite) '
+format = """
+┌$time-$username-$os-$directory$status$git_branch$git_status$python 
+└─> 
+"""
+[time]
+disabled = false
+format = '\[[$time](fg:#e78a4e)\]'
+time_format = '%H:%M'
+utc_time_offset = 'local'
+
 
 [directory]
-format='\[[$path](fg:#a9b665)[$read_only]($read_only_style)\]'
+format='\[[$path](fg:#89b482)\]'
 truncate_to_repo = false
 
 [username]
@@ -9,25 +18,22 @@ format='\[[$user](fg:#d8a657)\]'
 show_always = true
 
 [os]
-format = '\[[$name](fg:#7daea3)\]'
-style = "bold blue"
+format = '\[[$name](fg:#a9b665)\]'
 disabled = false
-
-[time]
-disabled = false
-format = '\[[$time](fg:#d4be98)\]'
-time_format = '%H:%M'
-utc_time_offset = 'local'
 
 [status]
 format='-\[[$int]($style)\]'
+success_symbol='0'
+style="red"
+success_style= 'fg:green'
 disabled=false
 
 [git_branch]
-format = '-\[[$branch(:$remote_branch)](fg:#e78a4e)'
+format = '-\[[$branch(:$remote_branch)](fg:#7daea3)'
 
 [git_status]
-format = '([$all_status$ahead_behind](fg:#e78a4e))\]'
+format = '([$all_status$ahead_behind](fg:#7daea3))\]'
 
 [python]
-format = '[(\[$virtualenv\]-)](fg:#d3869b)'
+style="#d3869b"
+format = '(-\[[$virtualenv]($style)\])'

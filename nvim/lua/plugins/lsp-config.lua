@@ -1,18 +1,17 @@
 local on_attach = function()
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {})
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, {desc="LSP Hover"})
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {desc="LSP go to definition"})
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc="LSP code action"})
+    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {desc="LSP rename"})
 
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {desc="LSP format file"})
     vim.keymap.set("n", "<leader>i", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end, {})
+    end, {desc="LPS enable inlay hints"})
 
     -- Telescope keymaps
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {})
-    vim.keymap.set("n", "<leader>gD", builtin.diagnostics, {})
+    vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {desc="LSP telescope open references"})
 end
 
 return {

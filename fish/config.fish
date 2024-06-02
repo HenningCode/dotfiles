@@ -18,7 +18,6 @@ alias ls "ls -h --group-directories-first --color=auto"
 alias vi "nvim"
 alias tu "tmux"
 
-source (/usr/bin/starship init fish --print-full-init | psub)
 
 function space
     if count $argv > /dev/null
@@ -27,3 +26,5 @@ function space
         du -sh *
     end
 end
+
+STARSHIP_LOG=debug /home/henning/Dev/Rust/starship/target/debug/starship init fish | source
