@@ -3,19 +3,15 @@
     font-family: JetBrainsMono;
     font-weight: bold;
 }
-@import "scripts/colors/colors.scss";
+@import "colors.scss";
 @import "scss/lib.scss";
 
 @import "scss/bar.scss";
 @import "scss/powermenu.scss";
-@import "scss/launcher.scss";
 
 @import "scss/control_center.scss";
 @import "scss/notifications_popup.scss";
 
-
-
-@import "scss/language.scss";
 @import "scss/taskbar.scss";
 @import "scss/clock.scss";
 @import "scss/logo.scss";

@@ -4,7 +4,6 @@
 
 (include "modules/bar.yuck")
 (include "modules/notifications_popup.yuck")
-(include "modules/launcher.yuck")
 (include "modules/control_center.yuck")
 (include "modules/closer.yuck")
 
@@ -20,7 +19,6 @@
 (include "modules/logo.yuck")
 (include "modules/workspaces.yuck")
 (include "modules/taskbar.yuck")
-(include "modules/language.yuck")
 (include "modules/indicator.yuck")
 (include "modules/clock.yuck")
 (include "modules/recorder_menu.yuck")
