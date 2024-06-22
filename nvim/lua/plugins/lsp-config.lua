@@ -1,17 +1,17 @@
 local on_attach = function()
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {desc="LSP Hover"})
-    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {desc="LSP go to definition"})
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc="LSP code action"})
-    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {desc="LSP rename"})
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "LSP go to definition" })
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
+    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP rename" })
 
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {desc="LSP format file"})
+    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "LSP format file" })
     vim.keymap.set("n", "<leader>i", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end, {desc="LPS enable inlay hints"})
+    end, { desc = "LPS enable inlay hints" })
 
     -- Telescope keymaps
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {desc="LSP telescope open references"})
+    vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { desc = "LSP telescope open references" })
 end
 
 return {
@@ -22,9 +22,6 @@ return {
         "j-hui/fidget.nvim",
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp",
-        "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
     },
     lazy = false,
     opts = {
@@ -33,8 +30,6 @@ return {
     config = function()
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         local cmp = require("cmp")
-        local luasnip = require("luasnip")
-        require("luasnip.loaders.from_vscode").lazy_load()
 
         require("mason").setup()
         require("fidget").setup({})
@@ -44,6 +39,14 @@ return {
 
         local lspconfig = require("lspconfig")
         lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        -- lspconfig.eslint.setup({
+            -- capabilities = capabilities,
+            -- on_attach = on_attach,
+        -- })
+        lspconfig.tsserver.setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
@@ -57,29 +60,24 @@ return {
                         loadOutDirsFromCheck = true,
                         runBuildScripts = true,
                     },
-                    -- Add clippy lints for Rust.
-                    checkOnSave = {
-                        allFeatures = true,
-                        command = "clippy",
-                        extraArgs = {
-                            "--",
-                            "--no-deps",
-                            "-Dclippy::correctness",
-                            "-Dclippy::complexity",
-                            "-Wclippy::perf",
-                            "-Wclippy::pedantic",
-                        },
-                    },
+                    -- -- Add clippy lints for Rust.
+                    -- checkOnSave = {
+                    --     allFeatures = true,
+                    --     command = "clippy",
+                    --     extraArgs = {
+                    --         "--",
+                    --         "--no-deps",
+                    --         "-Dclippy::correctness",
+                    --         "-Dclippy::complexity",
+                    --         "-Wclippy::perf",
+                    --         "-Wclippy::pedantic",
+                        -- },
+                    -- },
                 },
             },
         })
 
         cmp.setup({
-            snippet = {
-                expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                end,
-            },
             window = {
                 documentation = {
                     border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
@@ -97,8 +95,6 @@ return {
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
-                    elseif luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
                     else
                         fallback()
                     end
@@ -107,8 +103,6 @@ return {
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
                     else
                         fallback()
                     end
@@ -116,7 +110,6 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                { name = "luasnip" }, -- For luasnip users.
             }, {
                 { name = "buffer" },
             }),

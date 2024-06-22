@@ -4,6 +4,10 @@ if test (tty) = "/dev/tty1"
     exec Hyprland
 end
 
+if [ $TERM = "xterm-kitty" ]
+    alias ssh="kitty +kitten ssh"
+end
+
 set -U fish_user_paths  /home/henning/.local/share/bob/nvim-bin $fish_user_paths
 
 alias et "nvim ~/.config/tmux/tmux.conf"
@@ -27,4 +31,8 @@ function space
     end
 end
 
-STARSHIP_LOG=debug /home/henning/Dev/Rust/starship/target/debug/starship init fish | source
+/home/henning/Dev/Rust/starship/target/debug/starship init fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

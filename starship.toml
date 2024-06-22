@@ -1,20 +1,24 @@
 format = """
-┌$time-$username-$os-$directory$status$git_branch$git_status$python 
+┌$time-$username@$hostname-$directory$status$git_branch$git_status$python 
 └─> 
 """
+
 [time]
 disabled = false
 format = '\[[$time](fg:#e78a4e)\]'
 time_format = '%H:%M'
 utc_time_offset = 'local'
 
+[hostname]
+format = '[$hostname](fg:#a9b665)\]'
+ssh_only = false
 
 [directory]
 format='\[[$path](fg:#89b482)\]'
 truncate_to_repo = false
 
 [username]
-format='\[[$user](fg:#d8a657)\]' 
+format='\[[$user](fg:#d8a657)' 
 show_always = true
 
 [os]
@@ -23,9 +27,9 @@ disabled = false
 
 [status]
 format='-\[[$int]($style)\]'
-success_symbol='0'
 style="red"
-success_style= 'fg:green'
+success_style = "green"
+success_symbol = "0"
 disabled=false
 
 [git_branch]
@@ -37,3 +41,4 @@ format = '([$all_status$ahead_behind](fg:#7daea3))\]'
 [python]
 style="#d3869b"
 format = '(-\[[$virtualenv]($style)\])'
+
