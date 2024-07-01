@@ -1,8 +1,8 @@
 set fish_greeting
 
-if test (tty) = "/dev/tty1"
-    exec Hyprland
-end
+# if test (tty) = "/dev/tty1"
+#     exec Hyprland
+# end
 
 if [ $TERM = "xterm-kitty" ]
     alias ssh="kitty +kitten ssh"
@@ -32,7 +32,3 @@ function space
 end
 
 /home/henning/Dev/Rust/starship/target/debug/starship init fish | source
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

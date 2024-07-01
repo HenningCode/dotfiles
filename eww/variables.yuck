@@ -2,7 +2,6 @@
 
 (defvar open_control_center false)
 (defvar open_osd false)
-(defvar open_launcher false)
 (defvar clipboard "[]")
 (defvar ANIM_DURATION "500ms")
 

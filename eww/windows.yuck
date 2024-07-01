@@ -20,19 +20,6 @@
     (control_center)
 )
 
-(defwindow launcher
-    :monitor 0
-    :stacking "overlay"
-    :geometry (geometry
-                    :anchor "left top"
-                    :width "2px"
-                    :height "2px"
-                )
-    :focusable true
-    :namespace "eww"
-    (launcher)
-)
-
 (defwindow notifications_popup
     :monitor 0
     :stacking "overlay"
@@ -110,9 +97,3 @@
   :focusable false
   (closer :window "control_center"))
 
-(defwindow launcher-closer
-  :monitor 0
-  :geometry (geometry :width "100%" :height "100%")
-  :stacking "fg"
-  :focusable false
-  (closer :window "launcher"))  

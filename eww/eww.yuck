@@ -18,7 +18,6 @@
 
 (include "modules/logo.yuck")
 (include "modules/workspaces.yuck")
-(include "modules/taskbar.yuck")
 (include "modules/indicator.yuck")
 (include "modules/clock.yuck")
 (include "modules/recorder_menu.yuck")
