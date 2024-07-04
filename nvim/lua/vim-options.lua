@@ -20,6 +20,7 @@ vim.opt.undofile = true
 vim.opt.scrolloff = 8
 
 vim.opt.colorcolumn = "80"
+vim.opt.termguicolors = true
 
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
