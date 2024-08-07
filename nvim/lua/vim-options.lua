@@ -22,6 +22,9 @@ vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "80"
 vim.opt.termguicolors = true
 
+-- stops opening the quickfixlist if there is an error in zig
+vim.g.zig_fmt_parse_errors = 0
+
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")

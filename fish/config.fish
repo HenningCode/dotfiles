@@ -21,6 +21,7 @@ alias ll "ls -lh --group-directories-first --color=auto"
 alias ls "ls -h --group-directories-first --color=auto"
 alias vi "nvim"
 alias tu "tmux"
+alias hx "helix"
 
 
 function space
