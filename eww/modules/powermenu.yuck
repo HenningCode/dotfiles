@@ -16,16 +16,17 @@
         (powermenu_entry    :label "Reboot" 
                             :icon "󰜉" 
                             :onclick "systemctl reboot")
+
+        (powermenu_entry     :label "Lock"
+                            :icon ""
+                            :onclick "sleep 0.3 & loginctl lock-session & eww close powermenu & 
+                                        eww close control_center & eww close control_center-closer")
         
         (powermenu_entry    :label "Suspend" 
                             :icon "󰤄" 
                             :onclick "sleep 0.3 & systemctl suspend & eww close powermenu &
                                         eww close control_center & eww close control_center-closer")
 
-        (powermenu_entry    :label "Sign out" 
-                            :icon "󰗼" 
-                            :onclick "hyprctl dispatch exit 0")
-                                
         (powermenu_entry    :label "Cancel" 
                             :icon "󰅖" 
                             :onclick "eww close powermenu")
