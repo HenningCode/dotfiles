@@ -1,14 +1,11 @@
 set fish_greeting
 
-# if test (tty) = "/dev/tty1"
-#     exec Hyprland
-# end
-
-if [ $TERM = "xterm-kitty" ]
-    alias ssh="kitty +kitten ssh"
+if test (tty) = "/dev/tty1"
+    exec Hyprland
 end
 
-set -U fish_user_paths  /home/henning/.local/share/bob/nvim-bin $fish_user_paths
+set -U fish_user_paths /home/henning/.local/share/bob/nvim-bin $fish_user_paths
+set -U fish_user_paths /home/henning/.local/bin $fish_user_paths
 
 alias et "nvim ~/.config/tmux/tmux.conf"
 alias ef "nvim ~/.config/fish/config.fish"
