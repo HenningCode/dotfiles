@@ -18,15 +18,5 @@ alias ll "ls -lh --group-directories-first --color=auto"
 alias ls "ls -h --group-directories-first --color=auto"
 alias vi "nvim"
 alias tu "tmux"
-alias hx "helix"
-
-
-function space
-    if count $argv > /dev/null
-        du -sh $argv/*
-    else
-        du -sh *
-    end
-end
 
 /home/henning/Dev/Rust/starship/target/debug/starship init fish | source

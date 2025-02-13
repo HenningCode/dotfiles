@@ -1,1 +1,0 @@
- -- or just use Telescope themes
